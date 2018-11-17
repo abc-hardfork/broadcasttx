@@ -35,7 +35,7 @@ func main() {
 
 	// start up the server
 	engine := routers.InitRouter()
-	err = engine.Run(":80")
+	err = engine.Run(":8888")
 	if err != nil {
 		fmt.Println("engine startup failed:", err.Error())
 		os.Exit(1)
