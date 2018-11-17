@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"sync"
+	"time"
 )
 
 var (
@@ -83,5 +84,27 @@ func NewElectRpc(host string, p *chaincfg.Params) error {
 
 	node = n
 	param = p
+	go keepAlive()
 	return nil
+}
+
+func keepAlive() {
+	var reties int
+
+	for {
+		if err := node.Ping(); err != nil {
+			reties++
+			if reties >= 1000 {
+				logrus.Error("Retry to connect to electrum server failed too many times")
+
+				// Should find a HA resolution before stop exit program directly
+			}
+
+			logrus.Errorf("Ping to electrum server error: %v", err)
+		} else if reties != 0 {
+			reties = 0
+		}
+
+		time.Sleep(3)
+	}
 }
