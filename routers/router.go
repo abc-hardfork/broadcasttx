@@ -25,6 +25,8 @@ func InitRouter() *gin.Engine {
 		b.POST("/sv", api.BroadcastSvTx)
 	}
 
+	root.GET("/fetchtx/:hash", api.FetchTx)
+
 	return r
 }
 
