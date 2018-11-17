@@ -17,7 +17,9 @@ func InitRouter() *gin.Engine {
 	r.Use(inAllowIP())
 	r.Use(LogContext())
 
-	b := r.Group("/broadcast")
+	root := r.Group("service")
+
+	b := root.Group("/broadcast")
 	{
 		b.POST("/abc", api.BroadcastAbcTx)
 		b.POST("/sv", api.BroadcastSvTx)
