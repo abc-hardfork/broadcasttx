@@ -2,9 +2,9 @@ package routers
 
 import (
 	"bytes"
+	"github.com/abc-hardfork/broadcasttx/api"
 
 	"github.com/gin-gonic/gin"
-	"github.com/qshuai/broadcasttx/api"
 	"github.com/satori/go.uuid"
 	"github.com/sirupsen/logrus"
 )
@@ -23,6 +23,11 @@ func InitRouter() *gin.Engine {
 	{
 		b.POST("/abc", api.BroadcastAbcTx)
 		b.POST("/sv", api.BroadcastSvTx)
+	}
+
+	u := root.Group("/utxo")
+	{
+		u.GET("/query", api.QueryUtxo)
 	}
 
 	root.GET("/fetchtx/:hash", api.FetchTx)

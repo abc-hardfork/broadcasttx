@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/abc-hardfork/broadcasttx/api"
+	"github.com/abc-hardfork/broadcasttx/routers"
 	"os"
 
-	"github.com/qshuai/broadcasttx/api"
-	"github.com/qshuai/broadcasttx/routers"
 	"github.com/sirupsen/logrus"
 )
 
@@ -28,6 +28,13 @@ func main() {
 
 	// initial rpc instance
 	err = api.New(&conf.Abc, &conf.Sv)
+	if err != nil {
+		fmt.Println("initial rpc instance failed:", err.Error())
+		os.Exit(1)
+	}
+
+	// initial rpc instance
+	err = api.NewElectRpc(conf.Electron.Host,GetChainParam())
 	if err != nil {
 		fmt.Println("initial rpc instance failed:", err.Error())
 		os.Exit(1)

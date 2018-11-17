@@ -1,3 +1,4 @@
+testnet: true
 allowip:
   - 127.0.0.1
   - 21.23.09.126
@@ -9,3 +10,5 @@ sv:
   host: 127.0.0.1:8332
   user: rpc-username
   passwd: rpc-password
+Electron:
+  host: 127.0.0.1:9629

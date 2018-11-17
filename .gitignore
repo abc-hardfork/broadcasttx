@@ -2,3 +2,4 @@ broadcasttx
 *.log
 
 conf.yml
+.idea/*

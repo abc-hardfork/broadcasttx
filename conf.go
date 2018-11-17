@@ -1,10 +1,11 @@
 package main
 
 import (
+	"github.com/abc-hardfork/broadcasttx/api"
+	"github.com/bcext/gcash/chaincfg"
 	"os"
 	"path/filepath"
 
-	"github.com/qshuai/broadcasttx/api"
 	"github.com/spf13/viper"
 )
 
@@ -13,9 +14,24 @@ const (
 )
 
 type configuration struct {
-	AllowIP []string `mapstructure:"allowip"`
-	Abc     api.RPC  `mapstructure:"abc"`
-	Sv      api.RPC  `mapstructure:"sv"`
+	TestNet  bool     `mapstructure:"testnet"`
+	AllowIP  []string `mapstructure:"allowip"`
+	Abc      api.RPC  `mapstructure:"abc"`
+	Sv       api.RPC  `mapstructure:"sv"`
+	Electron Electron `mapstructure:"Electron"`
+}
+
+type Electron struct {
+	Host string `mapstructure:"host"`
+}
+
+func GetChainParam() *chaincfg.Params {
+	conf := GetConf()
+	if conf.TestNet {
+		return &chaincfg.TestNet3Params
+	}
+
+	return &chaincfg.MainNetParams
 }
 
 func GetConf() *configuration {
