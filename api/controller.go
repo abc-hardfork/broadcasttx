@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/bcext/gcash/rpcclient"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 var (
@@ -24,12 +25,14 @@ func BroadcastAbcTx(c *gin.Context) {
 	var p Param
 	err := c.ShouldBind(&p)
 	if err != nil {
+		logrus.Debug("invalid parameter: " + err.Error())
 		c.JSON(200, ErrParamResponse)
 		return
 	}
 
 	tx, err := parseTx(p.Rawtx)
 	if err != nil {
+		logrus.Debug("invalid transaction: " + err.Error())
 		c.JSON(200, ErrParseTransactionResponse)
 		return
 	}
@@ -51,12 +54,14 @@ func BroadcastSvTx(c *gin.Context) {
 	var p Param
 	err := c.ShouldBind(&p)
 	if err != nil {
+		logrus.Debug("invalid parameter: " + err.Error())
 		c.JSON(200, ErrParamResponse)
 		return
 	}
 
 	tx, err := parseTx(p.Rawtx)
 	if err != nil {
+		logrus.Debug("invalid transaction: " + err.Error())
 		c.JSON(200, ErrParseTransactionResponse)
 		return
 	}

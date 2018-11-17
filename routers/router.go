@@ -41,8 +41,7 @@ func inAllowIP() gin.HandlerFunc {
 		}
 
 		if !isAllowed {
-			c.AbortWithStatusJSON(200, api.ErrNotAllowedIP)
-			return
+			c.AbortWithStatusJSON(200, api.ErrNotAllowedIPResponse)
 		}
 
 		c.Next()
