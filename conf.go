@@ -26,6 +26,7 @@ func GetConf() *configuration {
 	}
 	defer file.Close()
 
+	viper.SetConfigType("yaml")
 	err = viper.ReadConfig(file)
 	if err != nil {
 		panic("Read config file error: " + err.Error())
