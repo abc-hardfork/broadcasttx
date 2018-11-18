@@ -15,6 +15,7 @@ var (
 	create sync.Mutex
 	node   *electrum.Node
 	param  *chaincfg.Params
+	pingInterval = 5 * time.Second
 )
 
 type UTxo struct {
@@ -105,6 +106,6 @@ func keepAlive() {
 			reties = 0
 		}
 
-		time.Sleep(3)
+		time.Sleep(pingInterval)
 	}
 }
