@@ -34,11 +34,7 @@ func main() {
 	}
 
 	// initial rpc instance
-	err = api.NewElectRpc(conf.Electron.Host,GetChainParam())
-	if err != nil {
-		fmt.Println("initial rpc instance failed:", err.Error())
-		os.Exit(1)
-	}
+	api.NewElectRpc(conf.Electron.Bsv, conf.Electron.Bch, GetChainParam())
 
 	// start up the server
 	engine := routers.InitRouter()

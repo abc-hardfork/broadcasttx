@@ -28,6 +28,8 @@ func InitRouter() *gin.Engine {
 	u := root.Group("/utxo")
 	{
 		u.GET("/query", api.QueryUtxo)
+		u.GET("/bch/query", api.QueryBCHUtxo)
+		u.GET("/diff", api.DiffUtxo)
 	}
 
 	root.GET("/fetchtx/:hash", api.FetchTx)

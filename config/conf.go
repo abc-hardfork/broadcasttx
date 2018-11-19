@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"github.com/abc-hardfork/broadcasttx/api"
@@ -22,8 +22,7 @@ type configuration struct {
 }
 
 type Electron struct {
-	Bsv string `mapstructure:"bsv"`
-	Bch string `mapstructure:"bch"`
+	Host string `mapstructure:"host"`
 }
 
 func GetChainParam() *chaincfg.Params {
