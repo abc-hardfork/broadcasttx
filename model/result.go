@@ -3,7 +3,7 @@ package model
 type UtxoCompare struct {
 	BsvUtxo  *[]UTxo
 	BchUtxo  *[]UTxo
-	DiffUtxo *[]UTxo
+	DupUtxo *[]UTxo
 }
 
 type UTxo struct {

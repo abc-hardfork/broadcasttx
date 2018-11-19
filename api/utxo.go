@@ -78,11 +78,11 @@ func DiffUtxo(c *gin.Context) {
 		})
 	}
 
-	diffUtxo := getUtxoDiff(bsvUtxo, bchUtxo)
+	dupUtxo := getUtxoDiff(bsvUtxo, bchUtxo)
 	c.JSON(200, response{
 		Code:    0,
 		Message: "",
-		Result:  model.UtxoCompare{BchUtxo: bchUtxo, BsvUtxo: bsvUtxo, DiffUtxo: diffUtxo},
+		Result:  model.UtxoCompare{BchUtxo: bchUtxo, BsvUtxo: bsvUtxo, DupUtxo: dupUtxo},
 	})
 
 }
