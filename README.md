@@ -1,21 +1,88 @@
-# harfork
+# Summary
 
-This Project is used for bitcoin abc hardfork.We support list apis:
+This Project is used for bitcoin abc hardfork.We support the following features
+:
+
+```
+queryBsvUtxos
+queryBchUtxos
+diffUtxos
+broadBchRawTransaction
+broadBsvRawTransaction
+```
+#HOWTO
+
+##### ElectrumX 
+For ABC:See [Electron-Cash/electrumx](https://github.com/Electron-Cash/electrumx).
+
+For BSV:See [kyuupichan/electrumx](https://github.com/kyuupichan/electrumx).
+##### golang
+1.10+
+
+#APIS
+
+### 1) /service/broadcast/abc
+
+broadcast bch transaction.
+
+##### Parameters
+`rawtx`： raw transaction to broadcast
+
+##### Result
+
+`string`：the hex-encoded
+
+##### Examples
+
+```
+00000044
+```
+
+---
     
-### 1、/service/broadcast/abc
-broadcast bch transaction
+### 2) /service/broadcast/sv
 
-### 2、/service/broadcast/sv
-broadcast bsv transaction
+broadcast bsv transaction.
 
-### 3、/utxo/query
-query bsv utxos
-  
-    #parameter
-    address string
+##### Parameters
+
+`rawtx`： raw transaction to broadcast
+
+##### Result
+
+`string`：the hex-encoded
+
+##### Examples
+
+```
+00000044
+```
+---
     
-    #result
-    {
+### 3) /utxo/query
+
+broadcast bsv transaction.
+##### Parameters
+`address`： string
+
+##### Result
+
+`txid`: string pre transaction tx_hash
+
+`vout`: string pre transaction tx_out index
+
+`scriptPubKey`: string script pubkey
+
+`value`: string pre transaction tx_out index
+
+`vout`: string pre transaction amount,unit:satoshi
+
+`blockHeight`: string pre transaction block height
+
+##### Examples
+
+```
+{
     "code": 0,
     "message": "",
     "result": [
@@ -28,15 +95,32 @@ query bsv utxos
         }
       ]
     }
+```
+---
+### 4) /utxo/bch/query
 
-### 4、/utxo/bch/query
-query bch utxos
-  
-    #parameter
-    address string
-    
-    #result
-    {
+broadcast bch transaction.
+##### Parameters
+`address`： string
+
+##### Result
+
+`txid`: string pre transaction tx_hash
+
+`vout`: string pre transaction tx_out index
+
+`scriptPubKey`: string script pubkey
+
+`value`: string pre transaction tx_out index
+
+`vout`: string pre transaction amount,unit:satoshi
+
+`blockHeight`: string pre transaction block height
+
+##### Examples
+
+```
+{
     "code": 0,
     "message": "",
     "result": [
@@ -49,15 +133,33 @@ query bch utxos
         }
       ]
     }
-    
-### 5、/utxo/diff
+```
+---
+### 5) /utxo/diff
+
 support query bch and bsv utxos,find same utxo...as DupUtxo filed
-  
-    #parameter
-    address string
-    
-    #result
-    {
+
+##### Parameters
+`address`： string
+
+##### Result
+
+`txid`: string pre transaction tx_hash
+
+`vout`: string pre transaction tx_out index
+
+`scriptPubKey`: string script pubkey
+
+`value`: string pre transaction tx_out index
+
+`vout`: string pre transaction amount,unit:satoshi
+
+`blockHeight`: string pre transaction block height
+
+##### Examples
+
+```
+{
     "code": 0,
     "message": "",
     "result": {
@@ -89,4 +191,5 @@ support query bch and bsv utxos,find same utxo...as DupUtxo filed
         }
       ]}
     }
-    
+```
+---
