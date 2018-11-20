@@ -10,7 +10,7 @@ diffUtxos
 broadBchRawTransaction
 broadBsvRawTransaction
 ```
-#HOWTO
+# HOWTO
 
 ##### ElectrumX 
 For ABC:See [Electron-Cash/electrumx](https://github.com/Electron-Cash/electrumx).
@@ -19,7 +19,7 @@ For BSV:See [kyuupichan/electrumx](https://github.com/kyuupichan/electrumx).
 ##### golang
 1.10+
 
-#APIS
+# APIS
 
 ### 1) /service/broadcast/abc
 
